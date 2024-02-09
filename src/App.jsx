@@ -11,10 +11,18 @@ const App = () => {
         setTasks(data)
     }, [])
 
+    function createTask(taskTitle){
+      setTasks([...tasks, {
+        title: taskTitle,
+        id:tasks.length,
+        description: "nueva tarea"
+      }])
+    }
+
   return (
     <div>
-      <TaskForm/>
-      <Tasklist/>
+      <TaskForm createTask={createTask}/>
+      <Tasklist tasks={tasks}/>
     </div>
   )
 }
